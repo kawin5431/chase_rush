@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+env/
+.env
+.venv/
+
+# Generated game data
+gameplay_stats.csv
+gameplay_stats_dashboard.png
+game_runs.csv
+game_data.csv
+game_stats.csv
+gift_events.csv
+wallet.csv
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
