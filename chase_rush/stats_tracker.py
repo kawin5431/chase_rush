@@ -81,14 +81,16 @@ class StatsTracker:
         if not self.session_data:
             return
         fieldnames = list(self.session_data[0].keys())
+        config.ensure_parent_dir(fn)
         with open(fn, "w", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=fieldnames)
             w.writeheader()
             w.writerows(self.session_data)
         # Write gift events to a sibling CSV so the favourite-prize-per-stage
         # lookup is reproducible from disk too.
-        gift_path = getattr(config, "GIFT_EVENTS_CSV", "gift_events.csv")
+        gift_path = config.GIFT_EVENTS_CSV
         if self.gift_events:
+            config.ensure_parent_dir(gift_path)
             with open(gift_path, "w", newline="", encoding="utf-8") as f:
                 w = csv.DictWriter(f, fieldnames=["time_s", "stage", "prize"])
                 w.writeheader()
@@ -104,7 +106,7 @@ class StatsTracker:
         if not self.session_data:
             return None
 
-        fn = path or getattr(config, "GAME_RUNS_CSV", "game_runs.csv")
+        fn = path or config.GAME_RUNS_CSV
         last = self.session_data[-1]
 
         def _last(col: str, default: int = 0) -> int:
@@ -155,6 +157,7 @@ class StatsTracker:
 
         fieldnames = list(row.keys())
         file_exists = os.path.exists(fn)
+        config.ensure_parent_dir(fn)
         with open(fn, "a", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=fieldnames)
             if not file_exists:

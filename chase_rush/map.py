@@ -83,7 +83,7 @@ class Map:
         # touch the disk after pygame's display is ready.
         if not hasattr(self, "_banana_img"):
             try:
-                raw = pygame.image.load("img/banana.png").convert_alpha()
+                raw = pygame.image.load(config.BANANA_IMG).convert_alpha()
                 # Preserve the sprite's native wide aspect ratio (~1.77:1)
                 # so the peel looks chunky instead of squished.
                 self._banana_img = pygame.transform.smoothscale(raw, (44, 25))

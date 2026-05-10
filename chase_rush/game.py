@@ -24,13 +24,17 @@ class Game:
         self.screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT))
         pygame.display.set_caption("Chase Rush")
         self.clock = pygame.time.Clock()
+        # Start audio before heavy map/player IO so the menu is not silent for seconds.
+        self.snd = SoundManager()
+        self.snd.start_game_ambient()
+        # Decode engine + combat SFX before the menu/gameplay loop so first inputs
+        # do not stall on large MP3 loads (especially lamboreal02).
+        self.snd.preload_gameplay_sounds()
         self.map = Map()
         self.player = Player(config.WORLD_WIDTH / 2, config.WORLD_HEIGHT / 2)
         self.map.generate(self.player.x, self.player.y)
         self.police: List[Police] = []
         self.stats = StatsTracker()
-        self.snd = SoundManager()
-        self.snd.start_game_ambient()
         self.font = pygame.font.SysFont(None, 48)
         self.frame = 0
         self.start_ticks = 0
@@ -950,8 +954,9 @@ class Game:
                 from .dashboard import Dashboard
 
                 Dashboard().load_data().plot_charts()
-                if os.path.exists(Dashboard.OUTPUT_PATH):
-                    raw = pygame.image.load(Dashboard.OUTPUT_PATH).convert()
+                dashboard_png = config.GAMEPLAY_STATS_DASHBOARD_PNG
+                if os.path.exists(dashboard_png):
+                    raw = pygame.image.load(dashboard_png).convert()
                     chart_surface = self._fit_width(raw, sw - 40)
             except Exception as exc:  # pragma: no cover — visual feedback
                 error_text = f"Could not render charts: {exc}"

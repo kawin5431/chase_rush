@@ -1,28 +1,37 @@
-# Python
+# Python cache files
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 .Python
 
-# Virtual environment
+# Virtual environments
+.venv/
 venv/
 env/
-.env
-.venv/
+ENV/
 
-# Generated game data
-gameplay_stats.csv
-gameplay_stats_dashboard.png
-game_runs.csv
+# Environment variables
+.env
+.env.*
+
+# IDE / Editor settings
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# LibreOffice lock files
+.~lock.*#
+
+# Generated / local persistence (see data/)
+data/*.csv
+data/*.png
 game_data.csv
 game_stats.csv
-gift_events.csv
-wallet.csv
 
 # macOS
 .DS_Store
-
-# VSCode
-.vscode/
-ChaseRush_Proposal.pdf

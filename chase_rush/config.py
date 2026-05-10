@@ -1,4 +1,13 @@
-"""Game constants and asset paths (unchanged filenames)."""
+"""Game constants and asset paths.
+
+Stats and generated reports live under ``data/`` (project root).
+Sprites and audio live under ``assets/`` (``assets/img``, ``assets/sound``).
+Run the game from the project root so these relative paths resolve.
+"""
+
+from __future__ import annotations
+
+import os
 
 SCREEN_WIDTH = 1500
 SCREEN_HEIGHT = 850
@@ -20,16 +29,22 @@ POLICE_H = 81
 POLICE_HIT_W = 27
 POLICE_HIT_H = 66
 
-PLAYER_IMG = "img/lamborghini.png"
-POLICE_IMG = "img/Screenshot_2568-05-11_at_02.04.16-removebg-preview.png"
+DATA_DIR = "data"
+ASSETS_DIR = "assets"
+
+PLAYER_IMG = f"{ASSETS_DIR}/img/lamborghini.png"
+POLICE_IMG = f"{ASSETS_DIR}/img/Screenshot_2568-05-11_at_02.04.16-removebg-preview.png"
+BANANA_IMG = f"{ASSETS_DIR}/img/banana.png"
 
 SPAWN_INTERVAL_MS = 2000
 DIFFICULTY_INTERVAL_MS = 30_000
-GAMEPLAY_STATS_CSV = "gameplay_stats.csv"
+GAMEPLAY_STATS_CSV = f"{DATA_DIR}/gameplay_stats.csv"
 # One row per completed run — used by the dashboard for run-to-run comparisons.
-GAME_RUNS_CSV = "game_runs.csv"
-GIFT_EVENTS_CSV = "gift_events.csv"
-WALLET_CSV = "wallet.csv"
+GAME_RUNS_CSV = f"{DATA_DIR}/game_runs.csv"
+GIFT_EVENTS_CSV = f"{DATA_DIR}/gift_events.csv"
+WALLET_CSV = f"{DATA_DIR}/wallet.csv"
+# Written by ``Dashboard.plot_charts()`` for the in-game stats viewer.
+GAMEPLAY_STATS_DASHBOARD_PNG = f"{DATA_DIR}/gameplay_stats_dashboard.png"
 
 # Shop: cost for two extra nitro tanks (full bars) usable this run only.
 NITRO_PACK_COST = 10
@@ -83,3 +98,10 @@ def stage_index(elapsed_s: float) -> int:
 
 # If True, hitbox overlay starts on; press H in-game to toggle.
 DEBUG_SHOW_HITBOXES = False
+
+
+def ensure_parent_dir(file_path: str) -> None:
+    """Create the parent directory for a relative or absolute file path."""
+    parent = os.path.dirname(file_path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)

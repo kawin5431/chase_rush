@@ -51,6 +51,7 @@ class Wallet:
     def _save(self) -> None:
         """Rewrite the CSV in full (tiny file, atomic-enough for this use)."""
         try:
+            config.ensure_parent_dir(self.path)
             with open(self.path, "w", encoding="utf-8", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=self._FIELDS)
                 writer.writeheader()
