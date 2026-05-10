@@ -36,7 +36,7 @@
 
 - **Proposal:** [ChaseRush_Proposal.pdf](ChaseRush_Proposal.pdf)
 
-- **YouTube Presentation:** *(link to be added)*
+- **YouTube Presentation:** [https://youtu.be/eWoHkiGRkuY](https://youtu.be/eWoHkiGRkuY)
 
 ---
 
