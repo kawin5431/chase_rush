@@ -34,9 +34,9 @@
 
   ![Dashboard](screenshots/visualization/Screenshot%202026-05-10%20at%2021.19.21.png)
 
-- **Proposal:** [ChaseRush_Proposal.pdf](ChaseRush_Proposal.pdf)
+- **Proposal:** [proposal.pdf](proposal.pdf)
 
-- **YouTube Presentation:** [https://youtu.be/eWoHkiGRkuY](https://youtu.be/eWoHkiGRkuY)
+- **YouTube Presentation:** [https://youtu.be/IEawSVkNR2s](https://youtu.be/IEawSVkNR2s)
 
 ---
 

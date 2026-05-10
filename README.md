@@ -5,7 +5,7 @@
 - **Project by:** kawin kaewparadai
 - **Student ID:** 6710545431
 - **Game Genre:** Action, Arcade, Infinite Runner
-- **YouTube presentation:** [https://youtu.be/eWoHkiGRkuY](https://youtu.be/eWoHkiGRkuY)
+- **YouTube presentation:** [https://youtu.be/IEawSVkNR2s](https://youtu.be/IEawSVkNR2s)
 
 Chase Rush is a top-down infinite car chase game where you drive a Lamborghini through a desert world while evading AI police cars. Survive as long as possible, collect gifts and money, and use nitro boosts to outrun the police. After each run, a full data visualization dashboard is automatically generated showing your stats.
 
